@@ -1,0 +1,67 @@
+Create your github account
+Create private repository in Github.com
+Clone repository on your local machine with "git clone <repo-path>" command
+Create index.html file with sample content to it
+Create Dockerfile with any web server on which you can run index.html file
+Commit both files to repository and push the code
+Create local docker image with above created file
+Run a docker image locally to validate image working properly
+Upload the working image (step 8) to dockerhub.com with your account
+Create manifest file for the above image
+Set up Jenkins as standalone instance, install all required, docker, kubernetes plugins
+Add kubernetes to Jenkins
+Write pipeline to deploy above dockerhub.com image from your repo (step 9) to deploy on your standalone kubernetes instance
+
+
+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 - - token
+
+
+to delete the images
+docker system prune --all
+
+make a directory:
+ mkdir folder1
+ cd folder1
+  git init
+  ls -a      ....to check if git hidden file is made
+  nano file1
+  git status -----to check if this fle is present in workspace ( in red font)
+  git add .   ----- to add this file into staging area
+  git status    ------fie will be converted to green font
+  git commit -m "1st"  -------to move this file from staging are to local repository
+  git log   --author, email id & total commit etc
+  git remote add origin https://github.com/amitsaxena2509/"foldername".git   ----to link github and local Repository
+  git push origin master
+   username
+   password: use token ( token to taken from setting -> developer setting > personal access tokens > generate new token
+
+
+ git clone https://github.com/SachinShewale/"foldername".git
+ username
+ token id
+ git status   ----check if folder is there in
+ cd "folder name"
+ ls
+ cat file name
+ nano file name
+ git status  - - - check it should be in working space
+ git add .
+ git status
+ git commit -m "2nd commit"
+ git status
+ git log
+ git remote add origin https://github.com/SachinShewale/sachin.git
+ git push -u origin master
+ git push origin master
+ username
+ token id
+
+
+
+
+
+plugin
+blue ocean
+
+
+

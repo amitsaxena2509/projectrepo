@@ -1,0 +1,43 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cftrack-namespace
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-deployment
+  namespace: cftrack-namespace
+  labels:
+    app: cftrack
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: cftrack
+  template:
+    metadata:
+      labels:
+        app: cftrack
+    spec:
+      containers:
+      - name: pydemo
+        image: amitsaxena2509/jenkinsproject1
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cftrack-service
+  namespace: cftrack-namespace
+spec:
+  type: NodePort
+  selector:
+    app: cftrack
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+      nodePort: 30004

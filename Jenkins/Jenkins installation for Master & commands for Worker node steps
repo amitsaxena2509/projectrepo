@@ -1,0 +1,61 @@
+Steps for Terminal for Jenkins
+
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt install default-jre -y
+sudo apt-get install jenkins -y
+
+
+PAT token - personal access token for git
+
+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 - - token
+
+
+login docker before pipeline run
+
+pipeline {
+    agent any
+    stages {
+        stage('Test') {
+            steps {
+                sh 'rm -rf newpipeline'
+                sh 'git clone https://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:amitsaxena2509@github.com/amitsaxena2509/newpipeline.git'
+                sh 'cd newpipeline && docker build -t jenkinsproject1 .'
+                sh 'docker tag jenkinsproject1 amitsaxena2509/jenkinsproject1'
+                sh 'docker login -u amitsaxena2509 -pOrchid@804'
+                sh 'docker push amitsaxena2509/jenkinsproject1''
+            }
+        }
+    }
+}
+
+
+copy .kube file to jenkins location
+
+ls
+ 1826  ls -a
+ 1827  cp -r .kube /var/lib/jenkins/
+ 1828  sudo cp -r .kube /var/lib/jenkins/
+ 1829  sudo su - jenkins
+ 1830  sudo chmod 777 /home/amit/.minikube/profiles/minikube/client.key
+ run pipeline
+
+pipeline {
+    agent any
+    stages {
+        stage('Test') {
+            steps {
+                sh 'cd /home/amit/project2 && kubectl apply -f all-in-one.yaml'
+            }
+        }
+    }
+}
+
+
+kubectl get pods -n cftrack_namespace
+ 1832* kubectl get 
+ 1833  kubectl get svc -n cftrack_namespace
+ 1834  kubectl get svc -n cftrack-namespace
+ 1835  kubectl get svc -n cftrack-namespace -o wide
+
